@@ -73,7 +73,8 @@ export function calc(obj, parent = undefined, values = {}, calcTypes = {}) {
                                     const fBody2 = `const {${Object.keys(MY_FUNCS).join(',')}} = MY_FUNCS; return ${e}`
                                     try {
                                         const f = new Function('MY_FUNCS', 'parent', 'arr', 'ix', fBody2);
-                                        const r = f(MY_FUNCS, values, values[target], ix)
+                                        const p = {...values, parent}
+                                        const r = f(MY_FUNCS, p, values[target], ix)
                                         if (r !== undefined && Number.isFinite(r)) {
                                             processed++
                                             return [r, 'f']
@@ -89,6 +90,7 @@ export function calc(obj, parent = undefined, values = {}, calcTypes = {}) {
                             calcTypes[target] = valNTypes.map(vt => vt[1])
 
                         } else {
+                            const p = {...values, parent}
                             const [vals, tp] = calc(val, values, values[target], calcTypes[target])
                             values[target] = vals
                             calcTypes[target] = tp
