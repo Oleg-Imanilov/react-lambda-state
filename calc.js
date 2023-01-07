@@ -104,6 +104,7 @@ export function calc(obj, parent = undefined, values = {}, calcTypes = {}) {
                     }
                 }
             } catch (ex) {
+                console.log(`Internal error calculation of '${target}'. Caused by:`, ex)
                 values[target] = undefined
                 calcTypes[target] = '?'                
             }
