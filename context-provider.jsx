@@ -1,7 +1,8 @@
 import lambdaStateReducer from './lambdaStateReducer'
 import { calc } from './calc'
 
-export default ({ useContext, useReducer } /* React */) => {
+export default (React) => {
+    const { useContext, useReducer } = React
     return function contextProvider(Store, reducer = st => st, initState = null) {
         const useLambdaStore = () => {
             const [state, dispatch, model, stateTypes] = useContext(Store);
