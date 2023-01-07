@@ -1,3 +1,4 @@
+import React from "react";
 import { createContext } from "react";
 import { contextProvider } from "../../index";
 
@@ -35,7 +36,7 @@ function reducer(state, action) {
     }
 }
 
-const { useLambdaStore, LambdaStoreProvider } = contextProvider(
+const { useLambdaStore, LambdaStoreProvider } = contextProvider(React)(
     Store,
     reducer,
     model
