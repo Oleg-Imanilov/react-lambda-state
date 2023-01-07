@@ -91,7 +91,7 @@ export function calc(obj, parent = undefined, values = {}, calcTypes = {}) {
 
                         } else {
                             const p = {...values, parent}
-                            const [vals, tp] = calc(val, values, values[target], calcTypes[target])
+                            const [vals, tp] = calc(val, p, values[target], calcTypes[target])
                             values[target] = vals
                             calcTypes[target] = tp
                         }
