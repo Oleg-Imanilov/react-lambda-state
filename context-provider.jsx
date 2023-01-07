@@ -1,3 +1,4 @@
+import React from 'react'
 import { useContext, useReducer } from 'react'
 import lambdaStateReducer, { propReducer } from './lambdaStateReducer'
 import { calc } from './calc'
