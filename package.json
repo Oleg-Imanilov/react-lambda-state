@@ -1,6 +1,6 @@
 {
   "name": "react-lambda-state",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "React state with calculated fields",
   "author": "Oleg Imanilov",
   "repository": {

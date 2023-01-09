@@ -7,7 +7,10 @@ State object may contain 2 spatial key patterns
 
 
 function copy(obj, prop) {
-    return Array.isArray(obj[prop]) ? [...obj[prop]] : { ...obj[prop] }
+    if(obj[prop]) {
+        return Array.isArray(obj[prop]) ? [...obj[prop]] : { ...obj[prop] }
+    }
+    return isIndex(prop)?[]:{}
 }
 
 function isIndex(x) {
@@ -69,7 +72,7 @@ function setProp(state, payload) {
             obj['_' + curr] = copy(obj, '_' + curr)
             obj = obj['_' + curr]
         } else {
-            obj[curr] = { ...(obj[curr] || isIndex(curr) ? [] : {}) }
+            obj[curr] = copy(obj, curr)
             obj = obj[curr]
         }
     }
@@ -95,7 +98,7 @@ function pushProp(state, payload) {
             obj['_' + curr] = copy(obj, '_' + curr)
             obj = obj['_' + curr]
         } else {
-            obj[curr] = { ...(obj[curr] || isIndex(curr) ? [] : {}) }
+            obj[curr] = copy(obj, curr)
             obj = obj[curr]
         }
     }
@@ -123,7 +126,7 @@ function clrProp(state, payload) {  // clear overrided value
             obj['_' + curr] = copy(obj, '_' + curr)
             obj = obj['_' + curr]
         } else {
-            obj[curr] = { ...(obj[curr] || isIndex(curr) ? [] : {}) }
+            obj[curr] = copy(obj, curr)
             obj = obj[curr]
         }
     }
